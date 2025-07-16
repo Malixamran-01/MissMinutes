@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  discord-task-bot:
+    build: .
+    container_name: discord-task-bot
+    restart: unless-stopped
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - GUILD_ID=${GUILD_ID}
+      - TASKS_CHANNEL_ID=${TASKS_CHANNEL_ID}
+      - DATABASE_PATH=data/tasks.db
+      - REMINDER_HOURS=${REMINDER_HOURS:-17}
+      - DAILY_SUMMARY_TIME=${DAILY_SUMMARY_TIME:-21:00}
+      - TIMEZONE=${TIMEZONE:-UTC}
+      - SUPERVISOR_USER_ID=${SUPERVISOR_USER_ID}
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./.env:/app/.env:ro
+    networks:
+      - discord-bot-network
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import asyncio; import aiosqlite; asyncio.run(aiosqlite.connect('/app/data/tasks.db').close())"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  discord-bot-network:
+    driver: bridge
+
+volumes:
+  bot-data:
+    driver: local
+  bot-logs:
+    driver: local
+
