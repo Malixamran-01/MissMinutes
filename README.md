@@ -23,6 +23,32 @@ A comprehensive Discord bot for managing employee tasks with automated reminders
 - **Cross-timezone Support**: Configurable timezone handling
 - **Database Persistence**: SQLite database for reliable data storage
 
+---
+
+## Screenshots
+
+Here are some screenshots of the bot in action:
+
+![Task Assignment](Screenshots/Screenshot%202025-07-17%20010649.png)
+*Task assignment in Discord*
+
+![Task List](Screenshots/Screenshot%202025-07-17%20010805.png)
+*Viewing assigned tasks*
+
+![Task Reminder](Screenshots/Screenshot%202025-07-17%20010907.png)
+*Automated task reminder*
+
+![Daily Summary](Screenshots/Screenshot%202025-07-17%20011303.png)
+*Daily summary sent to supervisor*
+
+![Overdue Notification](Screenshots/Screenshot%202025-07-17%20011349.png)
+*Overdue task notification*
+
+![Bot UI Example](Screenshots/image.png)
+*Bot user interface example*
+
+---
+
 ## Commands
 
 ### User Commands
